@@ -1,17 +1,26 @@
 ﻿using System;
 using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumProject
 {
     [TestFixture]
     public class FirefoxTesting : Hooks
     {
-        [Test]
-        public void FirefoxWikiTest()
+        [SetUp]
+        public void Initialize()
         {
-            Driver.Navigate().GoToUrl("https://www.wikipedia.org");
-            Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true),
-                                                                                "asd");
+           Driver.Navigate().GoToUrl("https://www.wikipedia.org");
+           
+        }
+
+        [Test]
+        public void FirefoxSelectElement()
+        {
+            var language = Driver.FindElement(By.Id("searchLanguage"));
+            var selectElement = new SelectElement(language);
+            selectElement.SelectByValue("en");
         }
     }
 
@@ -22,8 +31,7 @@ namespace SeleniumProject
         public void ChromeWikiTest()
         {
             Driver.Navigate().GoToUrl("https://www.wikipedia.org");
-            Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true),
-                                                                                "asd");
+      
         }
     }
 }
