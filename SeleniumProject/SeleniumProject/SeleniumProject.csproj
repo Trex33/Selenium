@@ -69,13 +69,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base.cs" />
-    <Compile Include="Hooks.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Features\SearchInWiki.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchInWiki.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\SearchInWikiSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Features\SearchInWiki.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SearchInWiki.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
